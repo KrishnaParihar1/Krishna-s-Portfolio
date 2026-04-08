@@ -101,17 +101,20 @@ export default function ScrollyCanvas() {
       }
     };
 
-    // Draw initial frame
-    render(Math.round(frameIndex.get()));
+    const isMobile = () => typeof window !== 'undefined' && window.innerWidth <= 768;
+
+    // Draw initial frame (Frame 0 for mobile, otherwise current frame)
+    render(isMobile() ? 0 : Math.round(frameIndex.get()));
 
     // Redraw on scroll
     const unsubscribeScroll = frameIndex.on("change", (latest) => {
+      if (isMobile()) return; // Pause video scrub on smaller devices
       render(Math.round(latest));
     });
 
     // Redraw on resize
     const handleResize = () => {
-      render(Math.round(frameIndex.get()));
+      render(isMobile() ? 0 : Math.round(frameIndex.get()));
     };
     window.addEventListener("resize", handleResize);
 
