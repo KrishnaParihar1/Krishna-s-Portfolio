@@ -39,7 +39,7 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight text-center">
-            Let's build something.
+            Let&apos;s build something.
           </h2>
           <p className="text-neutral-400 text-center mb-12 text-lg">
             Have a project in mind? Enter your details below.
